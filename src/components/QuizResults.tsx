@@ -2,6 +2,16 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { useState } from "react";
+import { Play, ExternalLink } from "lucide-react";
+
+interface Exercise {
+  title: string;
+  description: string;
+  videoUrl?: string;
+  steps: string[];
+}
 
 interface PillarResult {
   name: string;
@@ -9,7 +19,7 @@ interface PillarResult {
   score: number;
   maxScore: number;
   level: string;
-  exercises: string[];
+  exercises: Exercise[];
 }
 
 interface QuizResultsProps {
@@ -75,14 +85,57 @@ export const QuizResults = ({ results, onRestart }: QuizResultsProps) => {
               {/* Exercises for improvement */}
               <div className="mt-4 p-4 bg-muted/50 rounded-lg">
                 <h5 className="font-semibold mb-2 text-primary">Ejercicios recomendados:</h5>
-                <ul className="space-y-1 text-sm">
+                <div className="space-y-2">
                   {result.exercises.slice(0, 3).map((exercise, exerciseIndex) => (
-                    <li key={exerciseIndex} className="flex items-start gap-2">
-                      <span className="text-primary mt-1">•</span>
-                      <span>{exercise}</span>
-                    </li>
+                    <Dialog key={exerciseIndex}>
+                      <DialogTrigger asChild>
+                        <Button 
+                          variant="ghost" 
+                          className="w-full justify-start text-left text-sm p-2 h-auto hover:bg-accent/50"
+                        >
+                          <ExternalLink className="w-4 h-4 mr-2 flex-shrink-0" />
+                          <span className="truncate">{exercise.title}</span>
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+                        <DialogHeader>
+                          <DialogTitle className="flex items-center gap-2">
+                            <Play className="w-5 h-5 text-primary" />
+                            {exercise.title}
+                          </DialogTitle>
+                        </DialogHeader>
+                        <div className="space-y-4">
+                          <p className="text-muted-foreground">{exercise.description}</p>
+                          
+                          {exercise.videoUrl && (
+                            <div className="aspect-video bg-muted rounded-lg flex items-center justify-center">
+                              <iframe
+                                src={exercise.videoUrl}
+                                className="w-full h-full rounded-lg"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                              />
+                            </div>
+                          )}
+                          
+                          <div>
+                            <h4 className="font-semibold mb-2">Pasos a seguir:</h4>
+                            <ol className="space-y-2">
+                              {exercise.steps.map((step, stepIndex) => (
+                                <li key={stepIndex} className="flex items-start gap-2">
+                                  <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-xs font-semibold flex-shrink-0 mt-0.5">
+                                    {stepIndex + 1}
+                                  </span>
+                                  <span className="text-sm">{step}</span>
+                                </li>
+                              ))}
+                            </ol>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                   ))}
-                </ul>
+                </div>
               </div>
             </Card>
           );

@@ -16,12 +16,41 @@ const quizData = [
       "¿Presto atención al lenguaje corporal y facial para entender mejor cómo se sienten las personas?"
     ],
     exercises: [
-      "Escribir tres emociones frecuentes y tres que quisieras cambiar",
-      "Escribirse una carta personal sobre situaciones emocionales",
-      "Registrar emociones cuando suena una señal",
-      "Reflexionar sobre el yo público vs privado",
-      "Tomar conciencia del lenguaje emocional personal",
-      "Hacer un dibujo sobre cómo fue la semana emocionalmente"
+      {
+        title: "Escribir tres emociones frecuentes y tres que quisieras cambiar",
+        description: "Este ejercicio te ayuda a identificar patrones emocionales y establecer objetivos de desarrollo emocional.",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        steps: [
+          "Toma papel y lápiz o abre una aplicación de notas",
+          "Piensa en las últimas dos semanas y identifica 3 emociones que has sentido frecuentemente",
+          "Reflexiona sobre 3 emociones que te gustaría cambiar o manejar mejor",
+          "Escribe por qué quieres cambiar esas emociones",
+          "Guarda esta lista para revisarla semanalmente"
+        ]
+      },
+      {
+        title: "Escribirse una carta personal sobre situaciones emocionales",
+        description: "La autoescritura terapéutica permite procesar emociones y ganar perspectiva sobre nuestras reacciones.",
+        steps: [
+          "Encuentra un momento tranquilo para escribir",
+          "Dirígete a ti mismo/a como si fueras tu mejor amigo/a",
+          "Describe situaciones donde sientes emociones intensas",
+          "Explora qué desencadena esas emociones",
+          "Termina con palabras de comprensión y apoyo hacia ti mismo/a"
+        ]
+      },
+      {
+        title: "Registrar emociones cuando suena una señal",
+        description: "La práctica de mindfulness emocional te ayuda a desarrollar conciencia en tiempo real de tus estados emocionales.",
+        steps: [
+          "Configura 3-5 alarmas aleatorias en tu teléfono durante el día",
+          "Cuando suene la alarma, pausa lo que estés haciendo",
+          "Identifica qué emoción estás sintiendo en ese momento",
+          "Nota la sensación física en tu cuerpo",
+          "Registra el contexto (dónde estás, qué estabas haciendo)",
+          "Anota todo en una aplicación o cuaderno"
+        ]
+      }
     ]
   },
   {
@@ -34,12 +63,41 @@ const quizData = [
       "¿Soy capaz de manejar la frustración cuando las cosas no salen como espero?"
     ],
     exercises: [
-      "Contar hasta 20 antes de reaccionar",
-      "Practicar respiración consciente",
-      "Usar música para regular emociones",
-      "Hacer actividad física cuando hay tensión mental",
-      "Practicar comunicación asertiva",
-      "Convertir experiencias negativas en oportunidades de crecimiento"
+      {
+        title: "Contar hasta 20 antes de reaccionar",
+        description: "Técnica simple pero efectiva para crear espacio entre el impulso y la acción, permitiendo respuestas más reflexivas.",
+        steps: [
+          "Cuando sientas una emoción intensa, detente",
+          "Respira profundamente y comienza a contar del 1 al 20",
+          "Con cada número, respira conscientemente",
+          "Observa cómo cambia la intensidad de la emoción",
+          "Ahora responde desde un lugar más calmado"
+        ]
+      },
+      {
+        title: "Practicar respiración consciente",
+        description: "La respiración consciente activa el sistema nervioso parasimpático, promoviendo la calma y la claridad mental.",
+        videoUrl: "https://www.youtube.com/embed/YRPh_GaiL8s",
+        steps: [
+          "Siéntate cómodamente con la espalda recta",
+          "Inhala por la nariz durante 4 segundos",
+          "Retén la respiración por 4 segundos",
+          "Exhala por la boca durante 6 segundos",
+          "Repite este ciclo 5-10 veces",
+          "Practica esta técnica 2-3 veces al día"
+        ]
+      },
+      {
+        title: "Usar música para regular emociones",
+        description: "La música tiene un poderoso efecto en nuestro estado emocional y puede ser una herramienta valiosa para la autorregulación.",
+        steps: [
+          "Crea diferentes playlists para diferentes estados emocionales",
+          "Para calmar ansiedad: música clásica o ambient",
+          "Para elevar el ánimo: música alegre y energética",
+          "Para procesar tristeza: música melancólica y luego gradualmente más esperanzadora",
+          "Escucha conscientemente, prestando atención a cómo cambian tus emociones"
+        ]
+      }
     ]
   },
   {
@@ -52,12 +110,42 @@ const quizData = [
       "¿Reconozco y valoro tanto mis logros como mis limitaciones personales?"
     ],
     exercises: [
-      "Escribir 'yo soy capaz de...' regularmente",
-      "Escribir 'me merezco...' y 'me doy permiso para...'",
-      "Fijar metas alcanzables y celebrar logros",
-      "Mantener diálogo interno constructivo",
-      "Practicar la auto-compasión y aceptación",
-      "Escribir los logros diarios"
+      {
+        title: "Escribir afirmaciones de capacidad personal",
+        description: "Las afirmaciones positivas restructuran patrones de pensamiento y fortalecen la autoestima y confianza personal.",
+        steps: [
+          "Cada mañana, escribe 3 frases que comiencen con 'Yo soy capaz de...'",
+          "Escribe 2 frases que comiencen con 'Me merezco...'",
+          "Añade 2 frases que comiencen con 'Me doy permiso para...'",
+          "Lee estas afirmaciones en voz alta",
+          "Visualiza cumpliendolas",
+          "Repite este ejercicio durante 21 días seguidos"
+        ]
+      },
+      {
+        title: "Fijar metas alcanzables y celebrar logros",
+        description: "Establecer objetivos realistas y celebrar los éxitos construye confianza y motivación sostenible.",
+        steps: [
+          "Define una meta pequeña y específica para la semana",
+          "Descompón la meta en pasos diarios",
+          "Al completar cada paso, reconoce tu progreso",
+          "Al lograr la meta semanal, celebra de manera significativa",
+          "Reflexiona sobre qué aprendiste del proceso",
+          "Establece la siguiente meta basándote en este aprendizaje"
+        ]
+      },
+      {
+        title: "Mantener diálogo interno constructivo",
+        description: "Transformar la autocrítica en autocompasión mejora la autoestima y resilencia emocional.",
+        steps: [
+          "Observa tu diálogo interno durante el día",
+          "Cuando notes autocrítica, pausa y respira",
+          "Reformula el pensamiento como si le hablaras a un amigo querido",
+          "Usa palabras de comprensión y apoyo",
+          "Pregúntate: '¿Qué necesito escuchar ahora mismo?'",
+          "Practica esta reformulación consistentemente"
+        ]
+      }
     ]
   },
   {
@@ -70,12 +158,42 @@ const quizData = [
       "¿Resuelvo conflictos buscando acuerdos sin recurrir a la violencia o el silencio?"
     ],
     exercises: [
-      "Incorporar emociones en el diálogo habitual",
-      "Registrar emociones de otros durante interacciones",
-      "Practicar felicitar y agradecer a otros",
-      "Ofrecer ayuda en trabajos comunes",
-      "Permitirse recibir ayuda de otros",
-      "Practicar estrategias de resolución de conflictos"
+      {
+        title: "Incorporar emociones en el diálogo habitual",
+        description: "Expresar emociones conscientemente en las conversaciones mejora la conexión y comprensión mutua.",
+        steps: [
+          "En conversaciones diarias, incluye cómo te sientes",
+          "Usa frases como: 'Me siento...' o 'Esto me genera...'",
+          "Escucha las emociones que otros expresan",
+          "Valida las emociones de otros sin juzgar",
+          "Practica esto primero con personas de confianza",
+          "Gradualmente extiende esta práctica a más relaciones"
+        ]
+      },
+      {
+        title: "Practicar empatía activa",
+        description: "Desarrollar la habilidad de percibir y responder a las emociones de otros fortalece las relaciones interpersonales.",
+        steps: [
+          "Durante conversaciones, presta atención al lenguaje corporal",
+          "Observa el tono de voz y expresiones faciales",
+          "Pregunta: '¿Cómo te sientes con esto?'",
+          "Refleja lo que observas: 'Parece que te sientes...'",
+          "Ofrece apoyo: '¿Cómo puedo ayudarte?'",
+          "Registra estas observaciones para mejorar tu habilidad"
+        ]
+      },
+      {
+        title: "Desarrollar habilidades de resolución de conflictos",
+        description: "Aprender a manejar conflictos constructivamente fortalece las relaciones y reduce el estrés interpersonal.",
+        steps: [
+          "Cuando surja un conflicto, respira antes de reaccionar",
+          "Expresa tu perspectiva usando 'yo' en lugar de 'tú'",
+          "Escucha activamente el punto de vista del otro",
+          "Busca puntos en común y intereses compartidos",
+          "Propón soluciones que beneficien a ambas partes",
+          "Evalúa y ajusta el acuerdo según sea necesario"
+        ]
+      }
     ]
   },
   {
@@ -88,12 +206,43 @@ const quizData = [
       "¿Busco ayuda cuando la necesito y sé a quién acudir para resolver una dificultad?"
     ],
     exercises: [
-      "Participar en eventos divertidos y desarrollar sentido del humor",
-      "Hacer actividad física regularmente",
-      "Disfrutar actividades placenteras conscientemente",
-      "Escribir un diario para auto-reflexión",
-      "Participar en actividades de voluntariado",
-      "Mantener equilibrio entre trabajo, familia y descanso"
+      {
+        title: "Desarrollar sentido del humor y disfrutar el bienestar",
+        description: "El humor y el disfrute consciente mejoran la resistencia al estrés y la calidad de vida general.",
+        steps: [
+          "Dedica tiempo semanal a actividades que te hagan reír",
+          "Participa en eventos sociales divertidos",
+          "Aprende un chiste nuevo y compártelo",
+          "Ríe desinhibidamente ante situaciones graciosas",
+          "Encuentra humor en situaciones cotidianas",
+          "Comparte momentos divertidos con otros"
+        ]
+      },
+      {
+        title: "Mantener equilibrio vida-trabajo",
+        description: "Un equilibrio saludable entre diferentes áreas de la vida es fundamental para el bienestar emocional y la productividad.",
+        steps: [
+          "Define límites claros entre tiempo de trabajo y personal",
+          "Programa tiempo específico para familia y amigos",
+          "Incluye actividades recreativas en tu horario semanal",
+          "Practica decir 'no' a compromisos adicionales cuando sea necesario",
+          "Dedica tiempo a pasatiempos que disfrutas",
+          "Evalúa y ajusta tu equilibrio mensualmente"
+        ]
+      },
+      {
+        title: "Escribir un diario para auto-reflexión",
+        description: "La escritura reflexiva promueve el autoconocimiento, procesamiento emocional y claridad mental.",
+        videoUrl: "https://www.youtube.com/embed/tVlcKp3bWH8",
+        steps: [
+          "Elige un momento del día para escribir (mañana o noche)",
+          "Escribe durante 10-15 minutos sin parar",
+          "Incluye eventos del día y tus reacciones emocionales",
+          "Reflexiona sobre patrones que observas",
+          "Escribe agradecimientos y logros del día",
+          "Lee entradas anteriores semanalmente para identificar patrones"
+        ]
+      }
     ]
   }
 ];
