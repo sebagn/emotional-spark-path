@@ -4,7 +4,9 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useState } from "react";
-import { Play, ExternalLink } from "lucide-react";
+import { Play, ExternalLink, CheckCircle } from "lucide-react";
+import ExerciseCompletion from "./ExerciseCompletion";
+import { useAuth } from "@/hooks/useAuth";
 
 interface Exercise {
   title: string;
@@ -45,6 +47,10 @@ const getLevel = (score: number, maxScore: number) => {
 };
 
 export const QuizResults = ({ results, onRestart }: QuizResultsProps) => {
+  const { user } = useAuth();
+  const [selectedExercise, setSelectedExercise] = useState<any>(null);
+  const [completionOpen, setCompletionOpen] = useState(false);
+  
   const totalScore = results.reduce((sum, result) => sum + result.score, 0);
   const totalMaxScore = results.reduce((sum, result) => sum + result.maxScore, 0);
   const overallPercentage = (totalScore / totalMaxScore) * 100;
@@ -131,6 +137,25 @@ export const QuizResults = ({ results, onRestart }: QuizResultsProps) => {
                               ))}
                             </ol>
                           </div>
+                          
+                          {user && (
+                            <Button
+                              onClick={() => {
+                                setSelectedExercise({
+                                  id: `${result.name}-${exerciseIndex}`,
+                                  title: exercise.title,
+                                  description: exercise.description,
+                                  evidence_type: 'any',
+                                  pillar: result.name
+                                });
+                                setCompletionOpen(true);
+                              }}
+                              className="w-full mt-4"
+                            >
+                              <CheckCircle className="mr-2 h-4 w-4" />
+                              Completar Ejercicio
+                            </Button>
+                          )}
                         </div>
                       </DialogContent>
                     </Dialog>
@@ -160,6 +185,14 @@ export const QuizResults = ({ results, onRestart }: QuizResultsProps) => {
           </p>
         </Card>
       </div>
+
+      {selectedExercise && (
+        <ExerciseCompletion
+          exercise={selectedExercise}
+          open={completionOpen}
+          onOpenChange={setCompletionOpen}
+        />
+      )}
     </div>
   );
 };
