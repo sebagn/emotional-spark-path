@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Loader2, Upload, Mic, Video, Type, Trophy } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Exercise {
   id: string;
@@ -27,6 +28,7 @@ interface ExerciseCompletionProps {
 const ExerciseCompletion = ({ exercise, open, onOpenChange }: ExerciseCompletionProps) => {
   const { user } = useAuth();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [evidenceType, setEvidenceType] = useState<string>('text');
   const [evidenceText, setEvidenceText] = useState('');
@@ -156,22 +158,53 @@ const ExerciseCompletion = ({ exercise, open, onOpenChange }: ExerciseCompletion
   };
 
   if (showCongratulations) {
+    const congratulationMessages = [
+      `¡Increíble! Has completado "${exercise.title}". Tu dedicación al crecimiento personal es verdaderamente inspiradora. Cada ejercicio completado fortalece tu inteligencia emocional y te acerca más a la versión más plena de ti mismo/a.`,
+      `¡Excelente trabajo! Al completar "${exercise.title}" has dado un paso significativo en tu desarrollo emocional. Tu compromiso con el autoconocimiento y la mejora continua es admirable.`,
+      `¡Felicitaciones! Has superado otro desafío en tu camino de crecimiento personal. "${exercise.title}" ahora forma parte de tu historia de transformación y fortalecimiento emocional.`,
+      `¡Fantástico! Tu esfuerzo en completar "${exercise.title}" demuestra tu determinación por crecer emocionalmente. Cada reflexión y acción que tomas te convierte en una persona más consciente y equilibrada.`,
+    ];
+    
+    const randomMessage = congratulationMessages[Math.floor(Math.random() * congratulationMessages.length)];
+    
     return (
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="sm:max-w-md">
-          <div className="text-center py-6">
-            <div className="mx-auto mb-4 w-16 h-16 bg-gradient-success rounded-full flex items-center justify-center">
-              <Trophy className="h-8 w-8 text-white" />
+        <DialogContent className="sm:max-w-lg">
+          <div className="text-center py-8">
+            <div className="mx-auto mb-6 w-20 h-20 bg-gradient-success rounded-full flex items-center justify-center animate-pulse">
+              <Trophy className="h-10 w-10 text-white" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">¡Felicitaciones!</h3>
-            <p className="text-muted-foreground mb-6">
-              Has completado exitosamente el ejercicio "{exercise.title}". 
-              Tu crecimiento personal es admirable y cada paso que das te acerca más 
-              a desarrollar tu inteligencia emocional.
+            <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              ¡Felicitaciones!
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed text-base">
+              {randomMessage}
             </p>
-            <Button onClick={handleClose} className="w-full">
-              Continuar mi viaje
-            </Button>
+            <div className="bg-gradient-calm p-4 rounded-lg mb-6">
+              <p className="text-sm font-medium text-primary mb-1">💎 Has desbloqueado:</p>
+              <p className="text-sm text-muted-foreground">
+                Un nuevo recuerdo en tu línea de vida personal
+              </p>
+            </div>
+            <div className="space-y-3">
+              <Button 
+                onClick={() => {
+                  handleClose();
+                  // Navigate to profile to see the timeline
+                  navigate('/profile');
+                }} 
+                className="w-full bg-gradient-wellness hover:shadow-glow"
+              >
+                Ver mi línea de vida
+              </Button>
+              <Button 
+                onClick={handleClose} 
+                variant="outline" 
+                className="w-full"
+              >
+                Continuar explorando
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>

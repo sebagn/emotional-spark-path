@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { QuizQuestion } from "./QuizQuestion";
@@ -252,6 +252,7 @@ export const EmotionalQuiz = () => {
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [showResults, setShowResults] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const totalQuestions = quizData.reduce((sum, pillar) => sum + pillar.questions.length, 0);
   
@@ -272,7 +273,21 @@ export const EmotionalQuiz = () => {
   };
 
   const handleAnswer = (value: number) => {
+    // No procesar si ya está en transición
+    if (isTransitioning) return;
+    
     setAnswers(prev => ({ ...prev, [currentQuestion]: value }));
+    setIsTransitioning(true);
+    
+    // Avanzar automáticamente después de un breve delay
+    setTimeout(() => {
+      if (currentQuestion < totalQuestions - 1) {
+        setCurrentQuestion(prev => prev + 1);
+      } else {
+        setShowResults(true);
+      }
+      setIsTransitioning(false);
+    }, 1000); // Delay de 1 segundo para que el usuario vea su selección
   };
 
   const handleNext = () => {
@@ -323,11 +338,19 @@ export const EmotionalQuiz = () => {
           <h1 className="text-4xl font-bold mb-6 bg-gradient-wellness bg-clip-text text-transparent">
             Evaluación de Educación Emocional
           </h1>
-          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+          <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
             Descubre tu nivel de inteligencia emocional y recibe recomendaciones personalizadas 
             para fortalecer tus competencias emocionales. Este cuestionario evalúa los cinco 
             pilares fundamentales del bienestar emocional.
           </p>
+          
+          <div className="bg-primary/5 rounded-lg p-4 mb-8 border border-primary/20">
+            <p className="text-sm text-primary font-medium mb-1">✨ Experiencia optimizada</p>
+            <p className="text-sm text-muted-foreground">
+              El cuestionario avanza automáticamente al seleccionar una respuesta. 
+              También puedes usar los botones "Anterior" y "Siguiente" para navegar manualmente.
+            </p>
+          </div>
           
           <div className="grid grid-cols-5 gap-4 mb-8">
             {quizData.map((pillar, index) => (
