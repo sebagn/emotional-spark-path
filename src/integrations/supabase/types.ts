@@ -14,7 +14,113 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      exercise_completions: {
+        Row: {
+          completed_at: string
+          evidence_file_url: string | null
+          evidence_text: string | null
+          evidence_type: string
+          exercise_id: string
+          id: string
+          reflection: string | null
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          evidence_file_url?: string | null
+          evidence_text?: string | null
+          evidence_type: string
+          exercise_id: string
+          id?: string
+          reflection?: string | null
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          evidence_file_url?: string | null
+          evidence_text?: string | null
+          evidence_type?: string
+          exercise_id?: string
+          id?: string
+          reflection?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exercise_completions_exercise_id_fkey"
+            columns: ["exercise_id"]
+            isOneToOne: false
+            referencedRelation: "exercises"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      exercises: {
+        Row: {
+          created_at: string
+          description: string
+          evidence_type: string
+          id: string
+          pillar: string
+          steps: string[]
+          title: string
+          video_url: string | null
+        }
+        Insert: {
+          created_at?: string
+          description: string
+          evidence_type: string
+          id?: string
+          pillar: string
+          steps: string[]
+          title: string
+          video_url?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          evidence_type?: string
+          id?: string
+          pillar?: string
+          steps?: string[]
+          title?: string
+          video_url?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          bio: string | null
+          created_at: string
+          first_name: string | null
+          id: string
+          last_name: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          bio?: string | null
+          created_at?: string
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
